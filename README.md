@@ -7,4 +7,4 @@
 You can now edit the files in the `src` folder and they will hot reload in the electron app.
 
 ## Packaging for production
-Todo
+Run `npm run dist` to bundle assets and create the app executable

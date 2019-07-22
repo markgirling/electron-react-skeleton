@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -9,14 +10,10 @@ function createWindow () {
     }
   });
 
-  if (process.env.NODE_ENV == "production") {
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file:',
-      slashes: true
-    }));
+  if (process.env.NODE_ENV === 'development') {
+    win.loadURL("http://0.0.0.0:3000/index-dev.html");
   } else {
-    win.loadURL("http://0.0.0.0:3000/index.html");
+    win.loadFile(path.join(__dirname, 'index-prod.html'));
   }
 }
 

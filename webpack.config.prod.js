@@ -2,7 +2,6 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 module.exports = {
   entry: {
@@ -10,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'assets'),
-    filename: '[name].[contenthash].js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -31,9 +30,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
-    }),
-    new WebpackAssetsManifest({})
+      filename: '[name].css'
+    })
   ],
   optimization: {
     minimizer: [
